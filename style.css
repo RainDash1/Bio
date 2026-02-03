@@ -58,3 +58,29 @@ footer {
   font-size: 0.9rem;
   opacity: 0.7;
 }
+.links {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.link-grid a {
+  display: block;
+  padding: 0.9rem 1.2rem;
+  background: #1c1c28;
+  color: #eaeaf0;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.link-grid a:hover {
+  background: #2a2a40;
+  transform: translateY(-2px);
+}

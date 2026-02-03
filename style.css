@@ -72,6 +72,8 @@ footer {
 }
 
 .link-grid a {
+  font-weight: 600;
+  letter-spacing: 0.02em;
   display: block;
   padding: 0.9rem 1.2rem;
   background: #1c1c28;

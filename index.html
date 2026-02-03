@@ -29,19 +29,10 @@
     </ul>
   </section>
 
-  <section class="gallery">
-    <h2>Artwork</h2>
-    <div class="grid">
-  <!-- Normal image -->
-  <img src="art/Untitled21_20260112223157.png" alt="Artwork piece 1">
-
-  <!-- NSFW image -->
-  <div class="nsfw-container">
-    <span class="nsfw-tag">NSFW</span>
-    <img src="art/Untitled29_20260119205526.png" alt="Artwork piece 2" class="nsfw">
-  </div>
-</div>
-  </section>
+<section class="gallery">
+  <h2>Artwork</h2>
+  <div class="grid" id="gallery"></div>
+</section>
 
 <section class="links">
   <h2>Links</h2>
@@ -60,6 +51,23 @@
     </p>
   </footer>
 
+<script>
+fetch("gallery.json")
+  .then(res => res.json())
+  .then(files => {
+    const gallery = document.getElementById("gallery");
+
+    files.forEach(({ file }) => {
+      const img = document.createElement("img");
+      img.src = `art/${file}`;
+      img.alt = file;
+      img.loading = "lazy";
+      gallery.appendChild(img);
+    });
+  });
+</script>
+
+  
 </body>
   <script>
   document.querySelectorAll('.nsfw-container').forEach(container => {

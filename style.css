@@ -9,7 +9,7 @@ body {
 header {
   padding: 3rem 1rem;
   text-align: center;
-  background: color(#ddc0dc);
+  background-color: #ddc0dc;
 }
 
 .tagline {

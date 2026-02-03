@@ -87,3 +87,52 @@ footer {
   background: #2a2a40;
   transform: translateY(-2px);
 }
+.nsfw-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.nsfw-container img.nsfw {
+  filter: blur(16px);
+  transition: filter 0.25s ease;
+}
+
+.nsfw-container.revealed img.nsfw {
+  filter: blur(0);
+}
+
+.nsfw-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Optional: subtle dark overlay while blurred */
+.nsfw-container::after {
+  content: "Click to reveal";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffcc;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.nsfw-container.revealed::after {
+  opacity: 0;
+  pointer-events: none;
+}

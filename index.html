@@ -58,16 +58,45 @@ fetch("gallery.json")
     const gallery = document.getElementById("gallery");
 
     files.forEach(({ file }) => {
-      const img = document.createElement("img");
-      img.src = `art/${file}`;
-      img.alt = file;
-      img.loading = "lazy";
-      gallery.appendChild(img);
+      const isNSFW = /_nsfw/i.test(file);
+
+      if (isNSFW) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "nsfw-container";
+
+        const tag = document.createElement("span");
+        tag.className = "nsfw-tag";
+        tag.textContent = "NSFW";
+
+        const img = document.createElement("img");
+        img.src = `art/${file}`;
+        img.alt = file;
+        img.className = "art nsfw";
+        img.loading = "lazy";
+
+        wrapper.appendChild(tag);
+        wrapper.appendChild(img);
+        gallery.appendChild(wrapper);
+      } else {
+        const img = document.createElement("img");
+        img.src = `art/${file}`;
+        img.alt = file;
+        img.className = "art";
+        img.loading = "lazy";
+
+        gallery.appendChild(img);
+      }
+    });
+
+    // Click-to-reveal NSFW
+    document.querySelectorAll(".nsfw-container").forEach(container => {
+      container.addEventListener("click", () => {
+        container.classList.toggle("revealed");
+      });
     });
   });
 </script>
 
-  
 </body>
   <script>
   document.querySelectorAll('.nsfw-container').forEach(container => {

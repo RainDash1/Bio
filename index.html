@@ -32,10 +32,15 @@
   <section class="gallery">
     <h2>Artwork</h2>
     <div class="grid">
-      <img src="art/Untitled21_20260112223157.png" alt="Artwork 1">
-      <img src="art/art2.jpg" alt="Artwork 2">
-      <img src="art/art3.jpg" alt="Artwork 3">
-    </div>
+  <!-- Normal image -->
+  <img src="art/piece1.png" alt="Artwork piece 1">
+
+  <!-- NSFW image -->
+  <div class="nsfw-container">
+    <span class="nsfw-tag">NSFW</span>
+    <img src="art/piece2.png" alt="Artwork piece 2" class="nsfw">
+  </div>
+</div>
   </section>
 
 <section class="links">
@@ -56,4 +61,11 @@
   </footer>
 
 </body>
+  <script>
+  document.querySelectorAll('.nsfw-container').forEach(container => {
+    container.addEventListener('click', () => {
+      container.classList.toggle('revealed');
+    });
+  });
+</script>
 </html>

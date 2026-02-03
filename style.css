@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
-  background: #f2d6e9;
+  background: #dec8d7;
   color: #eaeaf0;
   line-height: 1.6;
 }
@@ -9,7 +9,7 @@ body {
 header {
   padding: 3rem 1rem;
   text-align: center;
-  background-color: #ddc0dc;
+  background: linear-gradient(135deg, #ddc0dc, #ddc0dc);
 }
 
 .tagline {

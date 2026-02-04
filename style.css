@@ -22,6 +22,10 @@ section {
   margin: auto;
 }
 
+/* =====================
+   Traits
+===================== */
+
 .traits {
   list-style: none;
   padding: 0;
@@ -37,28 +41,98 @@ section {
   border-radius: 999px;
 }
 
+/* =====================
+   Compact Gallery Grid
+===================== */
+
 .gallery .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-auto-rows: 8px;
+  grid-auto-flow: dense;
+  gap: 10px;
 }
 
-.gallery img {
+/* Normal images */
+.gallery img,
+.nsfw-container img {
   width: 100%;
-  border-radius: 8px;
+  height: auto;
+  display: block;
+  border-radius: 10px;
   transition: transform 0.2s ease;
 }
 
+/* Subtle hover lift (non-NSFW only) */
 .gallery img:hover {
   transform: scale(1.03);
 }
 
-footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  opacity: 0.7;
+/* Allow images to span multiple rows for masonry effect */
+.gallery img {
+  grid-row: span 20;
 }
+
+/* =====================
+   NSFW Handling
+===================== */
+
+.nsfw-container {
+  position: relative;
+  cursor: pointer;
+  grid-row: span 20;
+}
+
+.nsfw-container img.nsfw {
+  filter: blur(16px);
+  transition: filter 0.25s ease;
+}
+
+.nsfw-container.revealed img.nsfw {
+  filter: blur(0);
+}
+
+/* NSFW label */
+.nsfw-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Click-to-reveal overlay */
+.nsfw-container::after {
+  content: "Click to reveal";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffcc;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.nsfw-container.revealed::after {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =====================
+   Links Section
+===================== */
+
 .links {
   margin-top: 3rem;
   text-align: center;
@@ -87,52 +161,14 @@ footer {
   background: #2a2a40;
   transform: translateY(-2px);
 }
-.nsfw-container {
-  position: relative;
-  cursor: pointer;
-}
 
-.nsfw-container img.nsfw {
-  filter: blur(16px);
-  transition: filter 0.25s ease;
-}
+/* =====================
+   Footer
+===================== */
 
-.nsfw-container.revealed img.nsfw {
-  filter: blur(0);
-}
-
-.nsfw-tag {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Optional: subtle dark overlay while blurred */
-.nsfw-container::after {
-  content: "Click to reveal";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffffcc;
+footer {
+  text-align: center;
+  padding: 2rem;
   font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  opacity: 1;
-  transition: opacity 0.2s ease;
-}
-
-.nsfw-container.revealed::after {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0.7;
 }

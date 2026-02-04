@@ -68,9 +68,8 @@ section {
   transform: scale(1.03);
 }
 
-/* Allow images to span multiple rows for masonry effect */
 .gallery img {
-  grid-row: span 20;
+  grid-row: auto;
 }
 
 /* =====================
@@ -80,7 +79,7 @@ section {
 .nsfw-container {
   position: relative;
   cursor: pointer;
-  grid-row: span 20;
+  grid-row: auto;
 }
 
 .nsfw-container img.nsfw {
